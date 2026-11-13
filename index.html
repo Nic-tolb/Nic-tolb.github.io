@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgy Nikolas Tolosa Blanco — Desarrollo de Software</title>
+  <meta name="theme-color" content="#0e0e0d">
+  <meta name="description" content="Portafolio de Georgy Nikolas Tolosa Blanco, estudiante de Desarrollo de Software: desarrollo web, backend y bases de datos.">
+
+  <!-- Activa las animaciones solo si el navegador no pide "reducir movimiento".
+       La pantalla de carga se muestra solo en la primera visita de la sesión. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('js-anim');
+        try { if (sessionStorage.getItem('nt-visited')) root.classList.add('no-loader'); } catch (e) {}
+        // Seguridad: si algo falla al cargar, mostrar el contenido igualmente
+        setTimeout(function () { root.classList.remove('js-anim'); }, 3000);
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Iconos SVG (se usan con <svg class="icon"><use href="#i-..."/></svg>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- Pantalla de carga (solo con animaciones activas y en la primera visita) -->
+  <div class="loader" aria-hidden="true">
+    <span class="loader__name">Georgy Nikolas Tolosa Blanco</span>
+    <span class="loader__count">0</span>
+    <span class="loader__bar"></span>
+  </div>
+
+  <!-- Barra de progreso de lectura -->
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner glass">
+      <a href="#inicio" class="nav__logo" aria-label="Inicio">NT<span>.</span></a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Principal">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#certificaciones">Certificaciones</a>
+        <a href="#contacto" class="btn btn--small btn--accent">Contrátame</a>
+      </nav>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PORTADA ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__light"></span>
+      </div>
+
+      <div class="container hero__inner">
+        <p class="hero__eyebrow" data-hero>
+          <span class="dot"></span> Disponible para nuevos proyectos
+        </p>
+
+        <h1 class="hero__title">
+          <!-- PENDIENTE: confirmar el nombre corto de la portada (el completo va en "Sobre mí") -->
+          <span class="line"><span data-hero-line>Nikolas</span></span>
+          <span class="line"><span data-hero-line>Tolosa<em class="soft">.</em></span></span>
+        </h1>
+
+        <div class="hero__bottom">
+          <p class="hero__lead" data-hero>
+            <strong>Estudiante de Desarrollo de Software · Desarrollo web y soluciones de software.</strong>
+            Ayudo a <u>empresas, startups y emprendedores</u> a convertir sus necesidades e ideas en <u>soluciones de software funcionales, eficientes y adaptables</u>.
+          </p>
+
+          <div class="hero__actions" data-hero>
+            <a href="#servicios" class="btn btn--accent">Ver servicios</a>
+            <a href="#contacto" class="btn btn--ghost">Hablemos</a>
+          </div>
+        </div>
+
+        <div class="hero__photo" data-hero-photo aria-hidden="true">
+          <!-- PENDIENTE: guardar la foto en assets/foto.jpg y reemplazar por:
+               <img src="assets/foto.jpg" alt="Foto de Georgy Nikolas Tolosa Blanco"> -->
+          <span>Tu foto</span>
+        </div>
+      </div>
+
+      <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar a Sobre mí">
+        <span>Scroll</span><i></i>
+      </a>
+    </section>
+
+    <!-- ============ CINTA DE SERVICIOS (único elemento en movimiento continuo) ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Desarrollo web</span><i></i>
+        <span>Sistemas de gestión</span><i></i>
+        <span>Bases de datos</span><i></i>
+        <span>Backend y APIs</span><i></i>
+        <span>Desarrollo web</span><i></i>
+        <span>Sistemas de gestión</span><i></i>
+        <span>Bases de datos</span><i></i>
+        <span>Backend y APIs</span><i></i>
+      </div>
+    </div>
+
+    <!-- ============ SOBRE MÍ (Identidad) ============ -->
+    <section class="section" id="sobre-mi">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <span class="section__num">01</span>
+          <h2 class="section__title" data-split>Sobre mí</h2>
+        </header>
+
+        <p class="about__name" data-reveal>Georgy Nikolas Tolosa Blanco</p>
+        <p class="about__statement" data-words>
+          Soy estudiante de Desarrollo de Software con interés en el desarrollo de software y aplicaciones web.
+          Me caracterizo por escuchar y analizar las necesidades de cada cliente, proponer diferentes alternativas
+          y construir soluciones funcionales, eficientes y adaptables. Trabajo de manera colaborativa, manteniendo
+          una comunicación constante durante el desarrollo para incorporar mejoras y responder adecuadamente a
+          cambios o situaciones inesperadas.
+        </p>
+
+        <div class="pillars">
+          <article class="pillar" data-reveal>
+            <span class="pillar__tag">Misión</span>
+            <p>Crear soluciones de software funcionales, eficientes y de calidad que ayuden a personas, empresas y emprendedores a resolver sus necesidades y alcanzar sus objetivos.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <span class="pillar__tag">Visión</span>
+            <p>Convertirme en un profesional altamente capacitado y versátil, reconocido por mi capacidad para desarrollar y gestionar soluciones de alta calidad, combinando conocimientos de desarrollo de software y negocios para aportar un alto valor a las organizaciones y, en el futuro, desarrollar mis propios proyectos empresariales.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <span class="pillar__tag">Valores</span>
+            <ul class="pillar__list">
+              <li>Adaptabilidad</li>
+              <li>Trabajo en equipo</li>
+              <li>Aprendizaje</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="goals" data-reveal>
+          <h3 class="goals__title">Objetivos profesionales</h3>
+          <div class="goals__grid">
+            <p><span>Corto plazo</span>Crear y desarrollar mi marca personal y construir un portafolio que represente mis habilidades y proyectos.</p>
+            <p><span>Largo plazo</span>Adquirir experiencia en una gran empresa, convertirme en un desarrollador altamente capacitado y complementar mis conocimientos tecnológicos con conocimientos de negocios para desarrollarme como profesional y futuro empresario.</p>
+            <p><span>A quién me dirijo</span>Empresas, startups, agencias, emprendedores y personas que necesiten soluciones de software.</p>
+          </div>
+        </div>
+
+        <div class="stack" data-reveal>
+          <h3 class="goals__title">Tecnologías</h3>
+          <div class="stack__groups">
+            <div class="stack__group">
+              <span class="stack__label">Lenguajes</span>
+              <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Java</li><li>Python</li><li>SQL</li></ul>
+            </div>
+            <div class="stack__group">
+              <span class="stack__label">Bases de datos</span>
+              <ul class="chips"><li>MySQL</li><li>PostgreSQL</li></ul>
+            </div>
+            <div class="stack__group">
+              <span class="stack__label">Desarrollo</span>
+              <ul class="chips"><li>Frontend</li><li>Backend</li><li>APIs</li><li>Diseño responsive</li><li>Formularios</li><li>Login de usuarios</li><li>Web Components</li></ul>
+            </div>
+            <div class="stack__group">
+              <span class="stack__label">Herramientas y métodos</span>
+              <ul class="chips"><li>Git</li><li>GitHub</li><li>Scrum</li><li>Diseño de interfaces</li><li>Modelado de datos</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS (Valor) ============ -->
+    <!-- Tono de la sección: "section--studio" = clara (estudio).
+         Para dejarla oscura como el resto, cambia "section--studio" por "section--dark". -->
+    <section class="section section--studio" id="servicios">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <span class="section__num">02</span>
+          <h2 class="section__title" data-split>Servicios</h2>
+          <p class="section__intro">Qué ofrezco, para quién es y qué recibes. Toca cada servicio para ver el detalle.</p>
+        </header>
+
+        <!-- PENDIENTE: definir cada servicio (problema, para quién, qué recibe y tiempo, precio).
+             Los nombres son la propuesta inicial basada en tus proyectos; cámbialos si quieres. -->
+        <ul class="services">
+          <li class="service" data-reveal>
+            <button class="service__row" aria-expanded="false" aria-controls="svc-1">
+              <span class="service__num">01</span>
+              <span class="service__name">Sitio web o landing page responsive</span>
+              <span class="service__price"><mark class="todo">Precio</mark></span>
+              <span class="service__icon" aria-hidden="true"></span>
+            </button>
+            <div class="service__detail" id="svc-1">
+              <div class="service__detail-inner">
+                <p><strong>Problema que resuelve:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Para quién:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Qué recibes:</strong> <mark class="todo">Pendiente</mark></p>
+              </div>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <button class="service__row" aria-expanded="false" aria-controls="svc-2">
+              <span class="service__num">02</span>
+              <span class="service__name">Sistema de gestión web a la medida</span>
+              <span class="service__price"><mark class="todo">Precio</mark></span>
+              <span class="service__icon" aria-hidden="true"></span>
+            </button>
+            <div class="service__detail" id="svc-2">
+              <div class="service__detail-inner">
+                <p><strong>Problema que resuelve:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Para quién:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Qué recibes:</strong> <mark class="todo">Pendiente</mark></p>
+              </div>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <button class="service__row" aria-expanded="false" aria-controls="svc-3">
+              <span class="service__num">03</span>
+              <span class="service__name">Diseño e implementación de bases de datos</span>
+              <span class="service__price"><mark class="todo">Precio</mark></span>
+              <span class="service__icon" aria-hidden="true"></span>
+            </button>
+            <div class="service__detail" id="svc-3">
+              <div class="service__detail-inner">
+                <p><strong>Problema que resuelve:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Para quién:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Qué recibes:</strong> <mark class="todo">Pendiente</mark></p>
+              </div>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <button class="service__row" aria-expanded="false" aria-controls="svc-4">
+              <span class="service__num">04</span>
+              <span class="service__name">Backend y APIs</span>
+              <span class="service__price"><mark class="todo">Precio</mark></span>
+              <span class="service__icon" aria-hidden="true"></span>
+            </button>
+            <div class="service__detail" id="svc-4">
+              <div class="service__detail-inner">
+                <p><strong>Problema que resuelve:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Para quién:</strong> <mark class="todo">Pendiente</mark></p>
+                <p><strong>Qué recibes:</strong> <mark class="todo">Pendiente</mark></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="process" data-reveal>
+          <h3 class="process__title">¿Cómo trabajo?</h3>
+          <ol class="process__steps">
+            <li><span>1</span>Escuchar al cliente.</li>
+            <li><span>2</span>Analizar sus necesidades y requerimientos.</li>
+            <li><span>3</span>Ofrecer múltiples soluciones para que el cliente escoja la más acertada.</li>
+            <li><span>4</span>Desarrollar la solución.</li>
+            <li><span>5</span>Probar y corregir errores.</li>
+            <li><span>6</span>Entregar avances y realizar ajustes según los comentarios.</li>
+            <li><span>7</span>Realizar la entrega final.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS (Evidencia) ============ -->
+    <section class="section section--projects" id="proyectos">
+      <!-- En pantallas grandes este bloque se queda fijo y los proyectos se desplazan de lado -->
+      <div class="projects-pin">
+        <span class="projects-bgword" aria-hidden="true">Proyectos</span>
+
+        <div class="container">
+          <header class="section__head" data-reveal>
+            <span class="section__num">03</span>
+            <h2 class="section__title" data-split>Proyectos</h2>
+            <p class="section__intro">Proyectos académicos en equipo: desarrollo web, bases de datos y backend.</p>
+          </header>
+
+          <div class="projects-status glass" aria-hidden="true">
+            <span class="projects-status__count"><b>01</b> / 03</span>
+            <span class="projects-status__bar"><i></i></span>
+            <span class="projects-status__hint">Sigue bajando <svg class="icon"><use href="#i-arrow"/></svg></span>
+          </div>
+        </div>
+
+        <div class="projects-viewport">
+          <div class="projects">
+            <article class="project" data-reveal>
+              <div class="project__media" data-tone="1">
+                <!-- PENDIENTE: captura en assets/ y reemplazar por <img src="assets/..." alt="CampusBuild"> -->
+                <span>CampusBuild</span>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span><mark class="todo">Año</mark></span><span>Desarrollo web</span><span>En equipo</span></div>
+                <h3 class="project__title">CampusBuild</h3>
+                <dl class="project__facts">
+                  <div><dt>Contexto</dt><dd>Aplicación web para una empresa constructora ficticia, diseñada para centralizar la gestión de proyectos, actividades, recursos humanos, hitos y cronogramas.</dd></div>
+                  <div><dt>Mi rol</dt><dd><mark class="todo">Pendiente: qué parte desarrollaste tú</mark></dd></div>
+                  <div><dt>Resultado</dt><dd><span class="stats"><span class="stat-item"><span class="stat" data-count="8">8</span> funcionalidades</span></span> Proyectos, actividades, responsables, hitos, recursos humanos, calendario, seguimiento de estados y persistencia de datos.</dd></div>
+                </dl>
+                <ul class="chips chips--small"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Web Components</li><li>LocalStorage</li></ul>
+                <a href="https://github.com/Mic022/Sistema_de_gesti-n_de_proyectos_CampusBuild-grupo-Plan--A" class="link-arrow" target="_blank" rel="noopener">Ver en GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+
+            <article class="project project--reverse" data-reveal>
+              <div class="project__media" data-tone="2">
+                <!-- PENDIENTE: captura en assets/ y reemplazar por <img src="assets/..." alt="Sistema de Gestión de Coworking"> -->
+                <span>Sistema de Gestión de Coworking</span>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span><mark class="todo">Año</mark></span><span>Bases de datos</span><span>En equipo</span></div>
+                <h3 class="project__title">Sistema de Gestión de Coworking</h3>
+                <dl class="project__facts">
+                  <div><dt>Contexto</dt><dd>Base de datos relacional en MySQL para administrar las operaciones de un coworking: usuarios, membresías, espacios, reservas, pagos, facturación y accesos.</dd></div>
+                  <div><dt>Mi rol</dt><dd><mark class="todo">Pendiente: qué parte desarrollaste tú</mark></dd></div>
+                  <div><dt>Resultado</dt><dd><span class="stats"><span class="stat-item"><span class="stat" data-count="100">100</span> consultas</span><span class="stat-item"><span class="stat" data-count="20">20</span> funciones</span><span class="stat-item"><span class="stat" data-count="20">20</span> procedimientos</span><span class="stat-item"><span class="stat" data-count="20">20</span> triggers</span><span class="stat-item"><span class="stat" data-count="20">20</span> eventos</span><span class="stat-item"><span class="stat" data-count="5">5</span> roles</span></span></dd></div>
+                </dl>
+                <ul class="chips chips--small"><li>MySQL</li><li>SQL</li></ul>
+                <a href="https://github.com/Mic022/PROYECTO_SQL_PRUEBA_MAIN" class="link-arrow" target="_blank" rel="noopener">Ver en GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+
+            <article class="project" data-reveal>
+              <div class="project__media" data-tone="3">
+                <!-- PENDIENTE: captura en assets/ y reemplazar por <img src="assets/..." alt="RapidExpress"> -->
+                <span>RapidExpress</span>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span><mark class="todo">Año</mark></span><span>Backend · Java</span><span>En equipo</span></div>
+                <h3 class="project__title">RapidExpress</h3>
+                <dl class="project__facts">
+                  <div><dt>Contexto</dt><dd>Sistema para una empresa ficticia de logística cuya gestión manual con hojas de cálculo generaba errores y retrasos en vehículos, conductores, rutas y paquetes.</dd></div>
+                  <div><dt>Mi rol</dt><dd><mark class="todo">Pendiente: qué parte desarrollaste tú</mark></dd></div>
+                  <div><dt>Resultado</dt><dd><span class="stats"><span class="stat-item"><span class="stat" data-count="5">5</span> módulos</span><span class="stat-item"><span class="stat" data-count="4">4</span> reglas de negocio</span></span> Sistema de consola (CLI) con gestión de vehículos, conductores, paquetes, rutas, reportes y auditoría.</dd></div>
+                </dl>
+                <ul class="chips chips--small"><li>Java</li><li>POO</li><li>CLI</li></ul>
+                <a href="https://github.com/velascodazasergio-png/RapidExpress-triada_JAVA" class="link-arrow" target="_blank" rel="noopener">Ver en GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </article>
+
+            <aside class="project-cta">
+              <p>¿Tu proyecto es el siguiente?</p>
+              <a href="#contacto" class="btn btn--accent btn--big">Hablemos <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="more" data-reveal>
+          <h3 class="goals__title">Otros proyectos</h3>
+          <div class="more__grid">
+            <a class="more__card" href="https://github.com/Nic-tolb/ProyectoMusicStreamApp" target="_blank" rel="noopener">
+              <span class="more__cat">Frontend · En equipo</span>
+              <h4>MusicStream / Acme Records</h4>
+              <p>Plataforma ficticia de música y tienda digital: descubrimiento, reproductor, carrito y checkout, con diseño responsive Mobile First.</p>
+              <ul class="chips chips--small"><li>HTML5</li><li>CSS3</li><li>Responsive</li></ul>
+              <span class="link-arrow">Ver en GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </a>
+            <a class="more__card" href="https://github.com/Nic-tolb/Proyecto_Python_TolosaGeorgyBlancoNikolas" target="_blank" rel="noopener">
+              <span class="more__cat">Programación · Consola</span>
+              <h4>Simulador de Gasto Diario</h4>
+              <p>Aplicación de consola para registrar y controlar gastos diarios por categorías, con persistencia en JSON y reportes por día, semana y mes.</p>
+              <ul class="chips chips--small"><li>Python</li><li>JSON</li><li>Git</li></ul>
+              <span class="link-arrow">Ver en GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- PENDIENTE (opcional): testimonio de un profesor o compañero. Si no hay, se puede borrar este bloque. -->
+        <figure class="testimonial" data-reveal>
+          <blockquote><mark class="todo">Pendiente (opcional):</mark> una frase de un profesor o compañero sobre tu trabajo.</blockquote>
+          <figcaption><b>Nombre</b> · Cargo / relación contigo</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICACIONES (Respaldo) ============ -->
+    <section class="section section--soft" id="certificaciones">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <span class="section__num">04</span>
+          <h2 class="section__title" data-split>Certificaciones</h2>
+          <p class="section__intro">Formación que respalda mi trabajo.</p>
+        </header>
+
+        <ul class="certs">
+          <li class="cert" data-reveal>
+            <span class="cert__year"><mark class="todo">Año</mark></span>
+            <div>
+              <h3>Diploma de participación en Hackatón</h3>
+              <p><mark class="todo">Nombre del evento</mark></p>
+            </div>
+          </li>
+          <li class="cert" data-reveal>
+            <span class="cert__year"><mark class="todo">Año</mark></span>
+            <div>
+              <h3>Diploma de Bachillerato</h3>
+              <p><mark class="todo">Institución</mark></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO (El puente) ============ -->
+    <section class="contact" id="contacto">
+      <div class="container">
+        <span class="section__num" data-reveal>05</span>
+        <h2 class="contact__title" data-split>¿Trabajamos<br><em class="soft">juntos?</em></h2>
+        <p class="contact__lead" data-reveal>Cuéntame tu idea y te respondo en menos de 24 horas.</p>
+
+        <div class="contact__actions" data-reveal>
+          <!-- PENDIENTE: correo, WhatsApp, LinkedIn e Instagram reales -->
+          <a href="mailto:tucorreo@ejemplo.com" class="btn btn--accent btn--big">tucorreo@ejemplo.com</a>
+          <!-- Coloca tu CV en assets/CV.pdf -->
+          <a href="assets/CV.pdf" class="btn btn--ghost btn--big" download>Descargar CV <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
+        </div>
+
+        <ul class="contact__links" data-reveal>
+          <li><a href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          <li><a href="https://wa.me/00000000000" target="_blank" rel="noopener">WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          <li><a href="https://github.com/Nic-tolb" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          <li><a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener">Instagram <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Georgy Nikolas Tolosa Blanco</span>
+      <a href="#inicio">Volver arriba <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></a>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
